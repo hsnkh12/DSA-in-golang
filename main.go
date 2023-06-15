@@ -10,8 +10,7 @@ func main() {
 
 	ls.Push(1)
 	ls.Push(2)
-	ls.Push(5)
-	ls.Push(6)
-	ls.Remove(5)
+	ls.Push(4)
+	ls.Reverse()
 	ls.PrintValues()
 }

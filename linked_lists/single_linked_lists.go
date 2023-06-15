@@ -122,3 +122,33 @@ func (ls *SLinkedList) PrintValues() {
 	fmt.Println()
 
 }
+
+func (ls *SLinkedList) Reverse() {
+
+	if ls.head == nil {
+		panic("List is already empty")
+	}
+
+	if ls.head.Next == nil {
+		return
+	}
+
+	var currentNode *Node = ls.head.Next
+	var prevNode *Node = ls.head
+	ls.head.Next = nil
+
+	for {
+
+		nextNode := currentNode.Next
+		currentNode.Next = prevNode
+		prevNode = currentNode
+
+		if nextNode == nil {
+			ls.head = currentNode
+			break
+		}
+
+		currentNode = nextNode
+
+	}
+}
