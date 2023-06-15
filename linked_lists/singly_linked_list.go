@@ -38,9 +38,8 @@ func (ls *SLinkedList) Push(value int) {
 func (ls *SLinkedList) InsertFirst(value int) {
 
 	var newNode *Node = &Node{Value: value, Next: nil}
-	var currentNode *Node = ls.head
 
-	if currentNode == nil {
+	if ls.head == nil {
 		ls.head = newNode
 	}
 
