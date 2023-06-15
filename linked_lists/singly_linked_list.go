@@ -16,12 +16,13 @@ type SLinkedList struct {
 func (ls *SLinkedList) Push(value int) {
 
 	var newNode *Node = &Node{Value: value, Next: nil}
-	var currentNode *Node = ls.head
 
 	if ls.head == nil {
 		ls.head = newNode
 		return
 	}
+
+	var currentNode *Node = ls.head
 
 	for {
 

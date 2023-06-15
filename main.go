@@ -6,11 +6,11 @@ import (
 
 func main() {
 
-	var ls linked_lists.SLinkedList = linked_lists.SLinkedList{}
+	var ls linked_lists.DLinkedList = linked_lists.DLinkedList{}
 
 	ls.Push(1)
-	ls.Push(2)
-	ls.Push(4)
-	ls.Reverse()
+	// ls.Push(2)
+	// ls.Push(4)
+	// ls.Reverse()
 	ls.PrintValues()
 }
