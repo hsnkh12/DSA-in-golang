@@ -1,4 +1,4 @@
-package linked_lists
+package linear_ds
 
 import (
 	"fmt"

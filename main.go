@@ -1,19 +1,19 @@
 package main
 
 import (
-	"ds/linked_lists"
+	"ds/linear_ds"
+	"fmt"
 )
 
 func main() {
 
-	var ls linked_lists.DLinkedList = linked_lists.DLinkedList{}
+	var q linear_ds.Queue = linear_ds.Queue{}
+	var ls linear_ds.SLinkedList = linear_ds.SLinkedList{}
+	var dls linear_ds.DLinkedList = linear_ds.DLinkedList{}
 
+	q.Enqueue(1)
 	ls.Push(1)
-	ls.Push(2)
-	ls.Push(3)
-	ls.Push(4)
-	ls.Reverse()
-	// ls.Reverse()
-	//ls.Remove(3)
-	ls.PrintValues()
+	dls.InsertFirst(1)
+
+	fmt.Println("")
 }
