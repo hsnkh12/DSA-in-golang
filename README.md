@@ -8,6 +8,9 @@ Implementing data structures and algorithms in Go language.
 - Doubly Linked list
 - Queue
 - Stack
+- Graph
+- Tree (soon)
+- Heap (soon)
 
 ### Algorithms 
 - BFS (Breadth first search)
