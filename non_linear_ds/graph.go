@@ -4,69 +4,92 @@ import (
 	"fmt"
 )
 
+// GNode represents a node in the adjacency list.
 type GNode struct {
 	Vertex int
 	Next   *GNode
 }
 
+// ADJlist represents the adjacency list for a vertex.
 type ADJlist struct {
-	head *GNode
+	Head *GNode
 }
 
+// Graph represents a graph data structure.
 type Graph struct {
 	NumVertices int
-	lists       []*ADJlist
+	Lists       []*ADJlist
 }
 
+// CreateGraph creates a new graph with the specified number of vertices.
 func CreateGraph(vertices int) *Graph {
+	// Create a new graph with the specified number of vertices
+	var newGraph *Graph = &Graph{NumVertices: vertices, Lists: make([]*ADJlist, vertices)}
 
-	var newGraph *Graph = &Graph{NumVertices: vertices, lists: make([]*ADJlist, vertices)}
-
+	// Initialize the adjacency lists for each vertex
 	for i := 0; i < vertices; i++ {
-
-		newGraph.lists[i] = &ADJlist{head: nil}
+		newGraph.Lists[i] = &ADJlist{Head: nil}
 	}
 
 	return newGraph
 }
 
+// AddEdge adds an edge between two vertices in the graph.
 func (g *Graph) AddEdge(src int, dest int) {
-
+	// Add an edge from source to destination
 	g.DirectedAddEdge(src, dest)
+	// Add an edge from destination to source (undirected graph)
 	g.DirectedAddEdge(dest, src)
-
 }
 
+// DirectedAddEdge adds a directed edge from source to destination.
 func (g *Graph) DirectedAddEdge(src int, dest int) {
-
+	// Create a new node for the destination vertex
 	var newNode *GNode = &GNode{Vertex: dest}
-	newNode.Next = g.lists[src].head
-	g.lists[src].head = newNode
-
+	// Make the new node point to the current head of the adjacency list for the source vertex
+	newNode.Next = g.Lists[src].Head
+	// Set the new node as the new head of the adjacency list for the source vertex
+	g.Lists[src].Head = newNode
 }
 
+// GetAdjacentNodes returns the list of adjacent nodes for a given vertex.
+func (g *Graph) GetAdjacentNodes(src int) []*GNode {
+	var currentNode *GNode = g.Lists[src].Head
+	var adjacentNodes []*GNode
+
+	// Traverse the adjacency list for the source vertex and collect the adjacent nodes
+	for currentNode != nil {
+		adjacentNodes = append(adjacentNodes, currentNode)
+		currentNode = currentNode.Next
+	}
+
+	return adjacentNodes
+}
+
+// RemoveEdge removes an edge between two vertices in the graph.
 func (g *Graph) RemoveEdge(src int, dest int) {
-
-	g.DrectedRemoveEdge(src, dest)
-	g.DrectedRemoveEdge(dest, src)
-
+	// Remove the edge from source to destination
+	g.DirectedRemoveEdge(src, dest)
+	// Remove the edge from destination to source (undirected graph)
+	g.DirectedRemoveEdge(dest, src)
 }
 
-func (g *Graph) DrectedRemoveEdge(src int, dest int) {
-
-	var currentNode *GNode = g.lists[src].head
+// DirectedRemoveEdge removes a directed edge from source to destination.
+func (g *Graph) DirectedRemoveEdge(src int, dest int) {
+	var currentNode *GNode = g.Lists[src].Head
 	prevNode := currentNode
 
 	if currentNode == nil {
-		panic("Adjc list is already empty")
+		panic("Adjacency list is already empty")
 	}
 
+	// Check if the head node is the one to be removed
 	if currentNode.Vertex == dest {
-		g.lists[src].head = currentNode.Next
+		g.Lists[src].Head = currentNode.Next
 	}
 
+	// Traverse the adjacency list and find the node to be removed
 	for currentNode != nil {
-
 		if currentNode.Vertex == dest {
 			prevNode.Next = currentNode.Next
 			break
@@ -76,10 +99,11 @@ func (g *Graph) DrectedRemoveEdge(src int, dest int) {
 	}
 }
 
+// PrintGraph prints the adjacency list representation of the graph.
 func (g *Graph) PrintGraph() {
 	for i := 0; i < g.NumVertices; i++ {
 		fmt.Printf("Adjacency list for vertex %d: ", i)
-		current := g.lists[i].head
+		current := g.Lists[i].Head
 		for current != nil {
 			fmt.Printf("%d ", current.Vertex)
 			current = current.Next
