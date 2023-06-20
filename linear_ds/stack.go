@@ -10,6 +10,10 @@ func (s *Stack) IsEmpty() bool {
 	return s.top == nil
 }
 
+func (s *Stack) ShowTop() *Node {
+	return s.top
+}
+
 // Push adds a new node with the given value to the top of the stack.
 func (s *Stack) Push(value int) {
 	// Create a new node with the given value and set its next pointer to the current top
