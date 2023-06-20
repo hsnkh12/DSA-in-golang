@@ -49,3 +49,32 @@ func BFS(graph non_linear_ds.Graph, start int) {
 	}
 
 }
+
+// Depth first search
+func DFS(graph non_linear_ds.Graph, start int) {
+
+	var visited = make([]bool, graph.NumVertices)
+
+	visited[start] = true
+
+	DFSRec(start, visited, &graph)
+
+}
+
+// Depth first search recursion
+func DFSRec(vertex int, visited []bool, graph *non_linear_ds.Graph) {
+
+	visited[vertex] = true
+	fmt.Print(vertex, " ")
+	var adjacentNodes []*non_linear_ds.GNode = graph.GetAdjacentNodes(vertex)
+
+	for i := 0; i < len(adjacentNodes); i++ {
+
+		v := adjacentNodes[i].Vertex
+		if !visited[v] {
+			DFSRec(v, visited, graph)
+		}
+
+	}
+
+}

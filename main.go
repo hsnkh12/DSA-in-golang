@@ -11,6 +11,7 @@ func main() {
 	// var q linear_ds.Queue = linear_ds.Queue{}
 	// var ls linear_ds.SLinkedList = linear_ds.SLinkedList{}
 	// var dls linear_ds.DLinkedList = linear_ds.DLinkedList{}
+
 	var g non_linear_ds.Graph = *non_linear_ds.CreateGraph(6)
 
 	g.AddEdge(0, 1)
@@ -23,8 +24,8 @@ func main() {
 	g.AddEdge(4, 5)
 
 	g.PrintGraph()
-	algorithms.BFS(g, 0)
-
+	//algorithms.BFS(g, 0)
+	algorithms.DFS(g, 0)
 	// q.Enqueue(1)
 	// ls.Push(1)
 	// dls.InsertFirst(1)
