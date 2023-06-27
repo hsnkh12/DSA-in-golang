@@ -6,6 +6,18 @@ func Swap(elem1 *int, elem2 *int) {
 	*elem2 = temp
 }
 
+// Insertion sort: O(n^2)
+func InsertionSort(arr []int) {
+
+	for i := 1; i < len(arr); i++ {
+
+		for j := i; j > 0 && arr[j-1] > arr[j]; j-- {
+			Swap(&arr[j], &arr[j-1])
+		}
+
+	}
+}
+
 // Selection sort: O(n^2)
 func SelectionSort(arr []int) {
 
@@ -27,10 +39,10 @@ func BubbleSort(arr []int) {
 
 	for i := 0; i < len(arr); i++ {
 
-		for j := i + 1; j < len(arr); j++ {
+		for j := i + 1; j < len(arr)-i-1; j++ {
 
-			if arr[j] < arr[i] {
-				Swap(&arr[i], &arr[j])
+			if arr[j] > arr[j+1] {
+				Swap(&arr[j], &arr[j+1])
 			}
 		}
 	}

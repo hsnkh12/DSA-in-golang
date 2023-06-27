@@ -14,7 +14,7 @@ func main() {
 	// var g non_linear_ds.Graph = *non_linear_ds.CreateGraph(6)
 	var arr = []int{3, 4, 2, 1, 10, 6}
 
-	algorithms.BubbleSort(arr)
+	algorithms.InsertionSort(arr)
 
 	fmt.Println(arr)
 
