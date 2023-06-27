@@ -9,7 +9,6 @@ Implementing data structures and algorithms in Go language.
 - Queue
 - Stack
 - Graph
-- Tree
 - Heap (soon)
 
 ### Algorithms 
