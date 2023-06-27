@@ -9,13 +9,14 @@ Implementing data structures and algorithms in Go language.
 - Queue
 - Stack
 - Graph
-- Tree (soon)
+- Tree
 - Heap (soon)
 
 ### Algorithms 
 - BFS (Breadth first search)
 - DFS (Deapth first search) 
-- Sorting algorithms (soon)
+- Sorting algorithms
+- Search algorithms 
 - Greedy algortihms (soon)
 
 
