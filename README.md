@@ -13,8 +13,8 @@ Implementing data structures and algorithms in Go language.
 ### Algorithms 
 - BFS (Breadth first search)
 - DFS (Deapth first search) 
-- Sorting algorithms
-- Search algorithms 
+- 2 Sorting algorithms
+- 1 Search algorithm
 
 
 ## Donwload 
