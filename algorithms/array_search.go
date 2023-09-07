@@ -1,20 +1,32 @@
 package algorithms
 
-// Binary search: O(nlogn(n)) with pre-sorting the array
-func BinarySearch(arr []int, p int, r int, v int) int {
+// O(n)
+func LinearSearch(arr []interface{}, item interface{}) bool {
 
-	if p == r {
-		if arr[p] == v {
-			return 1
+	for i := 0; i < len(arr); i++ {
+		if arr[i] == item {
+			return true
 		}
-		return 0
 	}
 
-	q := int((p + r) / 2)
+	return false
+}
 
-	if v <= arr[q] {
-		return BinarySearch(arr, p, q, v)
+// O(logn)
+func BinarySearch(arr []int, low int, high int, value int) bool {
 
+	if low > high {
+		return false
 	}
-	return BinarySearch(arr, q+1, r, v)
+
+	middle := (low + high) / 2
+
+	if arr[middle] == value {
+		return true
+	} else if arr[middle] > value {
+		return BinarySearch(arr, low, middle-1, value)
+	} else {
+		return BinarySearch(arr, middle+1, high, value)
+	}
+
 }
